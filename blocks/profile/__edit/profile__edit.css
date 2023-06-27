@@ -9,6 +9,15 @@
     cursor: pointer;
 
 }
-.profile__edit:hover{
+
+.profile__edit:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width:650px) {
+    .profile__edit{
+        min-width: 18px;
+        min-height: 18px;
+    }
+    
 }

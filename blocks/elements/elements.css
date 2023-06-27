@@ -1,4 +1,4 @@
-.elements{
+.elements {
     display: grid;
     margin: 0 auto 0;
     padding: 0%;
@@ -6,4 +6,11 @@
     grid-template-columns: repeat(auto-fit, 282px);
     gap: 20px 17px;
     box-sizing: border-box;
+}
+
+@media screen and (max-width:950px) {
+    .elements {
+        justify-content: center;
+    }
+
 }
