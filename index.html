@@ -19,7 +19,7 @@
         <section class="profile">
             <img src="./images/image.jpg" alt="Аватар профиля" class="profile__avatar">
             <div class="profile__info">
-                <hi class="profile__name">Жак-Ив Кусто</hi>
+                <p class="profile__name">Жак-Ив Кусто</p>
                 <button type="button" class="profile__edit" aria-label="Редактировать профиль"></button>
                 <p class="profile__description">Исследователь океана</p>
             </div>
@@ -74,4 +74,20 @@
     <footer class="footer">
         <h2 class="footer__subscribe">© 2023 Mesto Russia</h2>
     </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__close" type="button" aria-label="Закрыть форму"></button>
+            <h1 class="popup__title">Редактировать профиль</h1>
+            <form>
+                <label>
+                    <input type="text" class="popup__input popup__input_name" name="username" placeholder="Ваше имя">
+                </label>
+                <label>
+                    <input type="text" class="popup__input popup__input_job" name="job" placeholder="Род деятельности">
+                </label>
+                <button type="button" class="popup__submit" aria-label="Сохранить данные">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <script src="./scripts/index.js"></script>
 </body>

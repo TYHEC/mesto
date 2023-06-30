@@ -8,13 +8,14 @@
 
 
 }
+
 @media screen and (max-width: 650px) {
-    .header__logo{
+    .header__logo {
         margin: 0px auto 32px 27px;
         width: 103px;
         height: 25px;
         background: url(../../../images/logo\ \(1\).svg) no-repeat;
 
     }
-    
+
 }

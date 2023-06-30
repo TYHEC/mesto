@@ -10,10 +10,11 @@
     height: 18px;
     max-height: 318px;
 }
+
 @media screen and (max-width:650px) {
-    .footer__subscribe{
+    .footer__subscribe {
         font-size: 14px;
         line-height: 17px;
     }
-    
+
 }
