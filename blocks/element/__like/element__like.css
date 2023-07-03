@@ -2,7 +2,7 @@
     margin: 0%;
     padding: 0%;
     border: none;
-    background: url(../../../images/Like.jpg) no-repeat, center;
+    background: url(../../../images/Like.svg) no-repeat, center;
     min-width: 22px;
     min-height: 19px;
     transition: ease-in-out 0.5s;
@@ -14,5 +14,5 @@
 }
 
 .element__like:active {
-    background: url(../../../images/Union\ \(1\).png);
+    background: url(../../../images/Like__active.svg);
 }
