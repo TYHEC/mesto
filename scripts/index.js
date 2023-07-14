@@ -42,8 +42,8 @@ const cardLinkInput = cardsPopup.querySelector('.popup__input_sense_job');
 const formCards = cardsPopup.querySelector('.popup__form');
 /* zoom */
 const zoomPopup = document.querySelector('#image-popup');
-const zoomPhoto = zoomPopup.querySelector('.popup__zoom_photo');
-const zoomName = zoomPopup.querySelector('.popup__zoom_name');
+const zoomPhoto = zoomPopup.querySelector('.popup__zoom-photo');
+const zoomName = zoomPopup.querySelector('.popup__zoom-name');
 
 /* Общая функция открытия попапа */
 
