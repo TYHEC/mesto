@@ -35,10 +35,17 @@
         <div class="popup__container">
             <button class="popup__close" type="button" aria-label="Закрыть форму"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form name="information" class="popup__form">
-                <input type="text" class="popup__input popup__input_sense_name" name="username" placeholder="Ваше имя">
-                <input type="text" class="popup__input popup__input_sense_job" name="job"
-                    placeholder="Род деятельности">
+            <form name="information" class="popup__form" novalidate>
+                <label for="profile-name-input" class="popup__field">
+                    <input type="text" class="popup__input" name="profile-name-input" placeholder="Ваше имя" required
+                        minlength="2" maxlength="40" id="profile-name-input">
+                    <span class="profile-name-input-error popup__error"></span>
+                </label>
+                <label for="job-input" class="popup__field">
+                    <input type="text" class="popup__input" name="job-input" placeholder="Род деятельности" required
+                        minlength="2" maxlength="200" id="job-input">
+                    <span class="job-input-error popup__error"></span>
+                </label>
                 <button type="submit" class="popup__submit" aria-label="Сохранить данные">Сохранить</button>
             </form>
         </div>
@@ -47,11 +54,17 @@
         <div class="popup__container">
             <button class="popup__close" type="button" aria-label="Закрыть форму"></button>
             <h3 class="popup__title">Новое место</h3>
-            <form name="newplace" class="popup__form">
-                <input type="text" class="popup__input popup__input_sense_name" name="cards-name"
-                    placeholder="Название">
-                <input type="text" class="popup__input popup__input_sense_job" name="cards-link"
-                    placeholder="Сслыка на картинку">
+            <form name="newplace" class="popup__form" novalidate>
+                <label for="card-name-input" class="popup__field">
+                    <input type="text" class="popup__input" name="cards-name-input" placeholder="Название" required
+                        minlength="2" maxlength="30" id="card-name-input">
+                    <span class="popup__error card-name-input-error"></span>
+                </label>
+                <label for="card-link-input" class="popup__field">
+                    <input type="url" class="popup__input" name="card-link-input" placeholder="Сслыка на картинку"
+                        required id="card-link-input">
+                    <span class="popup__error card-link-input-error"></span>
+                </label>
                 <button type="submit" class="popup__submit" aria-label="Создать карточку">Создать</button>
             </form>
         </div>
@@ -75,6 +88,7 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

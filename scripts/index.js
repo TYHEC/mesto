@@ -24,37 +24,49 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+const popups = document.querySelectorAll('.popup');
 /* profile */
 const popupProfile = document.querySelector('#profile-popup');
 const closePopupButtons = document.querySelectorAll('.popup__close');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__description');
-const profileNameInput = popupProfile.querySelector('.popup__input_sense_name');
-const profileJobInput = popupProfile.querySelector('.popup__input_sense_job');
+const profileNameInput = popupProfile.querySelector('#profile-name-input');
+const profileJobInput = popupProfile.querySelector('#job-input');
 const editProfile = document.querySelector('.profile__edit');
 const formProfile = document.forms['information'];
 /* cards */
 const cardsSection = document.querySelector('.elements');
 const addMestoIcon = document.querySelector('.profile__add-mesto');
 const cardsPopup = document.querySelector('#cards-popup');
-const cardNameInput = cardsPopup.querySelector('.popup__input_sense_name');
-const cardLinkInput = cardsPopup.querySelector('.popup__input_sense_job');
+const cardNameInput = cardsPopup.querySelector('#card-name-input');
+const cardLinkInput = cardsPopup.querySelector('#card-link-input');
 const formCards = document.forms['newplace'];
 /* zoom */
 const zoomPopup = document.querySelector('#image-popup');
 const zoomPhoto = zoomPopup.querySelector('.popup__zoom-photo');
 const zoomName = zoomPopup.querySelector('.popup__zoom-name');
 
+/* Закртыие попап нажатием на Esc */
+
+const closePopupPressingEsc = (evt) => {
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  };
+};
+
 /* Общая функция открытия попапа */
 
 const openPopup = function (popupType) {
   popupType.classList.add('popup_opened');
-}
+  document.addEventListener('keydown', closePopupPressingEsc);
+};
 
 /* Закрытие попапа */
 
 const closePopup = function (popupType) {
   popupType.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupPressingEsc);
 }
 
 /* Открытие попапа профиля */
@@ -119,6 +131,7 @@ const createCard = function (name, link) {
 }
 addMestoIcon.addEventListener('click', function () {
   openPopup(cardsPopup);
+  disableButton(cardsPopup);
 });
 
 /* Добавление карточки пользователем */
@@ -131,6 +144,13 @@ const addNewCard = function (evt) {
 }
 
 formCards.addEventListener('submit', addNewCard);
+
+
+const disableButton = (popups) => {
+  const submitButtonElement = popups.querySelector('.popup__submit');
+  submitButtonElement.classList.add('popup__submit_disabled');
+  submitButtonElement.disabled = 'dis';
+};
 
 /* Загрузка начальных карточек */
 
@@ -147,6 +167,16 @@ closePopupButtons.forEach(function (button) {
   const popupElement = button.closest('.popup');
   button.addEventListener('click', function () {
     closePopup(popupElement);
+  });
+});
+
+/* Закрытие любого попапа кликом на оверлей */
+
+popups.forEach((popupElement) => {
+  popupElement.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains('popup_opened')) {
+      closePopup(popupElement);
+    };
   });
 });
 
