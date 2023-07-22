@@ -38,7 +38,9 @@ function setEventListener(formElement, config) {
   const submitButton = formElement.querySelector(config.submitButtonSelector);
 
   toggleButtonState(submitButton, formElement.checkValidity(), config);
-
+  formElement.addEventListener('reset', () => {
+    toggleButtonState(submitButton, false, config);
+  });
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -48,9 +50,6 @@ function setEventListener(formElement, config) {
     inputItem.addEventListener('input', () => {
       toggleButtonState(submitButton, formElement.checkValidity(), config);
       chekInputValidity(inputItem, formElement, config);
-      formElement.addEventListener('reset', () => {
-        toggleButtonState(submitButton, false, config);
-      });
     })
 
   })
