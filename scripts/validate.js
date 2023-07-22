@@ -1,10 +1,10 @@
-function ShowError(inputElement, errorElement, config) {
+function showError(inputElement, errorElement, config) {
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(config.errorClass);
 };
 
-function HideError(inputElement, errorElement, config) {
+function hideError(inputElement, errorElement, config) {
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.remove(config.errorClass);
@@ -24,9 +24,9 @@ function chekInputValidity(inputElement, formElement, config) {
   const isInputValid = inputElement.validity.valid;
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   if (!isInputValid) {
-    ShowError(inputElement, errorElement, config)
+    showError(inputElement, errorElement, config)
   } else {
-    HideError(inputElement, errorElement, config)
+    hideError(inputElement, errorElement, config)
   }
 
 };
@@ -35,9 +35,9 @@ function chekInputValidity(inputElement, formElement, config) {
 
 function setEventListener(formElement, config) {
   const inputsList = formElement.querySelectorAll(config.inputSelector);
-  const submitButtonSelector = formElement.querySelector(config.submitButtonSelector);
+  const submitButton = formElement.querySelector(config.submitButtonSelector);
 
-  toggleButtonState(submitButtonSelector, formElement.checkValidity(), config);
+  toggleButtonState(submitButton, formElement.checkValidity(), config);
 
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -46,9 +46,13 @@ function setEventListener(formElement, config) {
 
   [...inputsList].forEach((inputItem) => {
     inputItem.addEventListener('input', () => {
-      toggleButtonState(submitButtonSelector, formElement.checkValidity(), config);
+      toggleButtonState(submitButton, formElement.checkValidity(), config);
       chekInputValidity(inputItem, formElement, config);
+      formElement.addEventListener('reset', () => {
+        toggleButtonState(submitButton, false, config);
+      });
     })
+
   })
 }
 
@@ -58,7 +62,7 @@ function enableValidtation(config) {
     setEventListener(formItem, config);
   })
 }
-const configFormSelector = {
+const formConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -67,4 +71,4 @@ const configFormSelector = {
   errorClass: 'popup__error_visible'
 }
 
-enableValidtation(configFormSelector);
+enableValidtation(formConfig);

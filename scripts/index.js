@@ -27,7 +27,6 @@ const initialCards = [
 const popups = document.querySelectorAll('.popup');
 /* profile */
 const popupProfile = document.querySelector('#profile-popup');
-const closePopupButtons = document.querySelectorAll('.popup__close');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__description');
 const profileNameInput = popupProfile.querySelector('#profile-name-input');
@@ -131,7 +130,6 @@ const createCard = function (name, link) {
 }
 addMestoIcon.addEventListener('click', function () {
   openPopup(cardsPopup);
-  disableButton(cardsPopup);
 });
 
 /* Добавление карточки пользователем */
@@ -145,13 +143,6 @@ const addNewCard = function (evt) {
 
 formCards.addEventListener('submit', addNewCard);
 
-
-const disableButton = (popups) => {
-  const submitButtonElement = popups.querySelector('.popup__submit');
-  submitButtonElement.classList.add('popup__submit_disabled');
-  submitButtonElement.disabled = 'dis';
-};
-
 /* Загрузка начальных карточек */
 
 const uploadInitialCards = function () {
@@ -161,20 +152,14 @@ const uploadInitialCards = function () {
 }
 uploadInitialCards();
 
-/* Закртие любого попапа при нажатии на крестик */
-
-closePopupButtons.forEach(function (button) {
-  const popupElement = button.closest('.popup');
-  button.addEventListener('click', function () {
-    closePopup(popupElement);
-  });
-});
-
-/* Закрытие любого попапа кликом на оверлей */
+/* Закрытие любого попапа кликом на оверлей и крестик */
 
 popups.forEach((popupElement) => {
   popupElement.addEventListener('mousedown', (e) => {
     if (e.target.classList.contains('popup_opened')) {
+      closePopup(popupElement);
+    };
+    if (e.target.classList.contains('popup__close')) {
       closePopup(popupElement);
     };
   });
