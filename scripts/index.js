@@ -1,3 +1,7 @@
+import { Card } from "./card.js";
+
+import { FormValidator } from "./FormValidator.js"
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -24,6 +28,16 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const formConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}
+
 const popups = document.querySelectorAll('.popup');
 /* profile */
 const popupProfile = document.querySelector('#profile-popup');
@@ -41,9 +55,9 @@ const cardNameInput = cardsPopup.querySelector('#card-name-input');
 const cardLinkInput = cardsPopup.querySelector('#card-link-input');
 const formCards = document.forms['newplace'];
 /* zoom */
-const zoomPopup = document.querySelector('#image-popup');
-const zoomPhoto = zoomPopup.querySelector('.popup__zoom-photo');
-const zoomName = zoomPopup.querySelector('.popup__zoom-name');
+export const zoomPopup = document.querySelector('#image-popup');
+export const zoomPhoto = zoomPopup.querySelector('.popup__zoom-photo');
+export const zoomName = zoomPopup.querySelector('.popup__zoom-name');
 
 /* Закртыие попап нажатием на Esc */
 
@@ -56,7 +70,7 @@ const closePopupPressingEsc = (evt) => {
 
 /* Общая функция открытия попапа */
 
-const openPopup = function (popupType) {
+export const openPopup = function (popupType) {
   popupType.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupPressingEsc);
 };
@@ -88,55 +102,23 @@ function handleProfileSubmit(evt) {
 
 editProfile.addEventListener('click', openPopupProfile);
 formProfile.addEventListener('submit', handleProfileSubmit);
-
-
-/* Попап добавления карточек */
-
-const createCard = function (name, link) {
-  const cardTemplate = document.querySelector('#element-template').content;
-  const cloneCardTemplate = cardTemplate.querySelector('.element').cloneNode(true);
-  const cardsPhoto = cloneCardTemplate.querySelector('.element__photo');
-  const cardName = cloneCardTemplate.querySelector('.element__name');
-
-  cardName.textContent = name;
-  cardsPhoto.src = link;
-  cardsPhoto.alt = name;
-
-  /* Zoom  */
-  const openZoomPhoto = function () {
-    zoomName.textContent = name;
-    zoomPhoto.src = link;
-    zoomPhoto.alt = name;
-    openPopup(zoomPopup);
-  }
-
-  cardsPhoto.addEventListener('click', openZoomPhoto);
-
-  /* Лайк */
-
-  cloneCardTemplate.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-  });
-
-  /* Удаление карточки  */
-
-  cloneCardTemplate.querySelector('.element__trash').addEventListener('click', function (evt) {
-    evt.target.closest('.element').remove();
-  });
-
-
-
-  return cloneCardTemplate;
-}
 addMestoIcon.addEventListener('click', function () {
   openPopup(cardsPopup);
 });
+/** Рендер  */
+const uploadCard = function (object, template) {
+  const card = new Card(object, template);
+  return card.createCard();
+};
 
 /* Добавление карточки пользователем */
 
 const addNewCard = function (evt) {
   evt.preventDefault();
-  cardsSection.prepend(createCard(cardNameInput.value, cardLinkInput.value));
+  cardsSection.prepend(uploadCard({
+    name: cardNameInput.value,
+    link: cardLinkInput.value
+  }, '#element-template'));
   evt.target.reset()
   closePopup(cardsPopup);
 }
@@ -147,7 +129,7 @@ formCards.addEventListener('submit', addNewCard);
 
 const uploadInitialCards = function () {
   initialCards.forEach(function (card) {
-    cardsSection.append(createCard(card.name, card.link));
+    cardsSection.append(uploadCard(card, '#element-template'));
   });
 }
 uploadInitialCards();
@@ -164,6 +146,11 @@ popups.forEach((popupElement) => {
     };
   });
 });
+
+const addNewCardValidate = new FormValidator(formConfig, cardsPopup);
+addNewCardValidate.enableValidation();
+const popupProfileValidate = new FormValidator(formConfig, popupProfile);
+popupProfileValidate.enableValidation();
 
 
 
