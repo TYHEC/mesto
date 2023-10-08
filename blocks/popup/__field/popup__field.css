@@ -2,9 +2,5 @@
     margin: 0%;
     padding: 0%;
     display: block;
-    margin-bottom: 13px;
-}
-
-.popup__field:last-of-type {
-    margin-bottom: 31px;
+    margin-bottom: 10px;
 }

@@ -1,17 +1,20 @@
 import { openPopup, zoomName, zoomPopup, zoomPhoto } from "./index.js";
 class Card {
-    constructor(data, templateElement) {
+    constructor(data, templateSelector) {
         this._name = data.name;
         this._image = data.link;
-        this._template = templateElement;
-        this._element = document.querySelector(this._template).content.querySelector('.element').cloneNode(true);
-        this._elementPhoto = this._element.querySelector('.element__photo');
-        this._elementName = this._element.querySelector('.element__name');
-        this._likeButton = this._element.querySelector('.element__like');
-        this._deleteButton = this._element.querySelector('.element__trash');
+        this._templateSelector = templateSelector;
     }
-    _likeCard = (evt) => {
-        evt.target.classList.toggle('element__like_active');
+    _createCardFromTemplate() {
+        this._element = document
+            .querySelector(this._templateSelector)
+            .content
+            .querySelector('.element')
+            .cloneNode(true);
+    }
+
+    _likeCard() {
+        this._element.querySelector('.element__like').classList.toggle('element__like_active');
     }
     _deleteCard() {
         this._element.remove();
@@ -23,16 +26,17 @@ class Card {
         openPopup(zoomPopup);
     }
     createCard() {
-        this._elementName.textContent = this._name;
-        this._elementPhoto.src = this._image;
-        this._elementPhoto.alt = this._name;
+        this._createCardFromTemplate();
+        this._element.querySelector(".element__photo").src = this._image;
+        this._element.querySelector(".element__photo").alt = this._name;
+        this._element.querySelector('.element__name').textContent = this._name;
         this._setEventListeners();
         return this._element;
     }
-    _setEventListeners = () => {
-        this._deleteButton.addEventListener('click', evt => this._deleteCard(evt));
-        this._likeButton.addEventListener('click', evt => this._likeCard(evt));
-        this._elementPhoto.addEventListener('click', () => this._openZoomPhoto());
+    _setEventListeners() {
+        this._element.querySelector('.element__trash').addEventListener('click', () => { this._deleteCard() });
+        this._element.querySelector('.element__like').addEventListener('click', () => { this._likeCard() });
+        this._element.querySelector('.element__photo').addEventListener('click', () => { this._openZoomPhoto() });
 
     };
 

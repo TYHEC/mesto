@@ -17,9 +17,9 @@ class FormValidator {
         errorElement.textContent = inputElement.validationMessage;;
         errorElement.classList.remove(this._config.errorClass);
     }
-    _toggleButtonState() {
+    toggleButtonState() {
         if (this._hasInvalidInput()) {
-            this._submitButton.disabled = 'dis';
+            this._submitButton.disabled = true;
             this._submitButton.classList.add(this._config.inactiveButtonClass);
         } else {
             this._submitButton.classList.remove(this._config.inactiveButtonClass);
@@ -34,11 +34,11 @@ class FormValidator {
         }
     }
     _setEventListeners() {
-        this._toggleButtonState();
+        this.toggleButtonState();
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._checkInputValidity(inputElement);
-                this._toggleButtonState();
+                this.toggleButtonState();
             });
         });
     }
