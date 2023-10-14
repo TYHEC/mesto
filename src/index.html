@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
     <meta name="description" content="Седьмая проектная работа">
     <meta name="keywords" content="html, css, JS">
     <meta name="author" content="Акулов Артём">
@@ -17,7 +16,7 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img src="./images/image.jpg" alt="Аватар профиля" class="profile__avatar">
+            <img src="<%=require('./images/image.jpg')%>" alt="Аватар профиля" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__edit" aria-label="Редактировать профиль"></button>
@@ -86,7 +85,6 @@
             </div>
         </div>
     </template>
-    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-import { openPopup, zoomName, zoomPopup, zoomPhoto } from "./index.js";
+import { openPopup, zoomName, zoomPopup, zoomPhoto } from "../pages/index.js";
 class Card {
     constructor(data, templateSelector) {
         this._name = data.name;

@@ -1,6 +1,7 @@
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js"
-import { initialCards, validationConfig } from "./Constans.js";
+import { Card } from "../scripts/Card.js";
+import { FormValidator } from "../scripts/FormValidator.js"
+import { initialCards, validationConfig } from "../scripts/Constans.js";
+import './index.css';
 
 const popups = document.querySelectorAll('.popup');
 /* profile */
