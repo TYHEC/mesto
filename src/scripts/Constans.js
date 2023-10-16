@@ -33,3 +33,11 @@ export const validationConfig = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
 }
+export const popupProfile = document.querySelector('#profile-popup');
+export const editProfile = document.querySelector('.profile__edit');
+export const addMestoIcon = document.querySelector('.profile__add-mesto');
+export const cardsPopup = document.querySelector('#cards-popup');
+export const formProfile = document.forms['information'];
+export const formCards = document.forms['newplace'];
+export const profileNameInput = popupProfile.querySelector('#profile-name-input');
+export const profileJobInput = popupProfile.querySelector('#job-input');

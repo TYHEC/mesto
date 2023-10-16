@@ -1,9 +1,9 @@
-import { openPopup, zoomName, zoomPopup, zoomPhoto } from "../pages/index.js";
 class Card {
-    constructor(data, templateSelector) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._image = data.link;
         this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick;
     }
     _createCardFromTemplate() {
         this._element = document
@@ -19,12 +19,7 @@ class Card {
     _deleteCard() {
         this._element.remove();
     }
-    _openZoomPhoto() {
-        zoomName.textContent = this._name;
-        zoomPhoto.src = this._image;
-        zoomPhoto.alt = this._name;
-        openPopup(zoomPopup);
-    }
+
     createCard() {
         this._createCardFromTemplate();
         this._element.querySelector(".element__photo").src = this._image;
@@ -36,7 +31,7 @@ class Card {
     _setEventListeners() {
         this._element.querySelector('.element__trash').addEventListener('click', () => { this._deleteCard() });
         this._element.querySelector('.element__like').addEventListener('click', () => { this._likeCard() });
-        this._element.querySelector('.element__photo').addEventListener('click', () => { this._openZoomPhoto() });
+        this._element.querySelector('.element__photo').addEventListener('click', () => this._handleCardClick(this._image, this._name));
 
     };
 
