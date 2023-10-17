@@ -21,14 +21,19 @@ const handleCardClick = function (image, name) {
 
 /** Попап профиля */
 const userInfo = new UserInfo({
-  name: '.profile__name',
-  job: '.profile__description'
+  usernameSelector: '.profile__name',
+  userjobSelector: '.profile__description'
 });
 
-const editProfilePopup = new PopupWithForm('#profile-popup', () => {
-  userInfo.setUserInfo(profileNameInput, profileJobInput)
-  editProfilePopup.close();
-});
+const editProfilePopup = new PopupWithForm('#profile-popup',{
+  callbackSubmitForm: (profileData) =>{
+    userInfo.setUserInfo({
+      name: profileData.name,
+      job: profileData.job
+    });
+    editProfilePopup.close();
+  }
+})
 
 editProfilePopup.setEventListeners();
 editProfile.addEventListener('click', () => {
@@ -38,7 +43,6 @@ editProfile.addEventListener('click', () => {
   editProfilePopup.open();
   popupProfileValidator.removeErrorWarning();
 })
-
 
 
 /** Рендер  */
@@ -59,15 +63,15 @@ uploadInitialCards.renderItems();
 
 /* Попап добавления карточек */
 
-const addNewCardPopup = new PopupWithForm('#cards-popup',
-  updatedValues => {
+const addNewCardPopup = new PopupWithForm('#cards-popup',{
+  callbackSubmitForm: (updatedValues) => {
     uploadInitialCards.addItem(uploadCard({
       name: updatedValues.cardname,
       link: updatedValues.cardlink
     }));
     addNewCardPopup.close();
   }
-);
+});
 addNewCardPopup.setEventListeners();
 
 /* Отырктие попапа карточек при клике*/
