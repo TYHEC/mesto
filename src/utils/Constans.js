@@ -41,3 +41,5 @@ export const formProfile = document.forms['information'];
 export const formCards = document.forms['newplace'];
 export const profileNameInput = popupProfile.querySelector('#profile-name-input');
 export const profileJobInput = popupProfile.querySelector('#job-input');
+export const profileName = document.querySelector('.profile__name');
+export const profileJob = document.querySelector('.profile__description');
