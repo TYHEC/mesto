@@ -11,6 +11,15 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
 import './index.css';
+import { Api } from "../components/Api.js";
+
+const api = new Api({
+  utl:"https://mesto.nomoreparties.co/v1/cohort-77/",
+  headers:{
+      authorization:"7838e6f3-5851-44f6-8023-4e26f5b26a5c",
+      'Content-Type': 'application/json'
+  }
+});
 
 /** Зум попап */
 const zoomPopup = new PopupWithImage('#image-popup');
