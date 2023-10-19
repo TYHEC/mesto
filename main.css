@@ -45,7 +45,15 @@
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar/profile__avatar.css ***!
   \*************************************************************************************************************************************************************************/
-.profile__avatar{border-radius:50%;height:120px;width:120px}@media screen and (max-width:650px){.profile__avatar{margin-bottom:26px}}
+.profile__avatar{border-radius:50%;height:120px;margin:0;padding:0;width:120px}@media screen and (max-width:650px){.profile__avatar{margin-bottom:26px}}
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-change/profile__avatar-change.css ***!
+  \***************************************************************************************************************************************************************************************/
+.profile__avatar-change{background:none;border:none;border-radius:50%;height:120px;margin:0;padding:0;position:absolute;width:120px}.profile__avatar-change:hover{background:url(8667ac4a523e8fc42e59.svg) no-repeat 50% rgba(0,0,0,.8);cursor:pointer;opacity:.8}
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-zone/profile__avatar-zone.css ***!
+  \***********************************************************************************************************************************************************************************/
+.profile__avatar-zone{display:flex;margin:0;padding:0}
 /*!**********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/elements.css ***!
   \**********************************************************************************************************************************************************/
@@ -78,6 +86,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like/_active/element__like_active.css ***!
   \************************************************************************************************************************************************************************************/
 .element__like_active{background:url(87ed371465c7a6a1cd01.svg)}
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like-zone/element__like-zone.css ***!
+  \*******************************************************************************************************************************************************************************/
+.element__like-zone{align-items:center;display:flex;flex-direction:column;margin:0;padding:0}
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like-counter/element__like-counter.css ***!
+  \*************************************************************************************************************************************************************************************/
+.element__like-counter{color:#000;font-size:13px;font-weight:400;height:13px;line-height:15.7px;margin:0;padding:3px 0 0;width:10px}
 /*!******************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/footer/footer.css ***!
   \******************************************************************************************************************************************************/
