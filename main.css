@@ -49,7 +49,7 @@
 /*!***************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-change/profile__avatar-change.css ***!
   \***************************************************************************************************************************************************************************************/
-.profile__avatar-change{background:none;border:none;border-radius:50%;height:120px;margin:0;padding:0;position:absolute;width:120px}.profile__avatar-change:hover{background:url(8667ac4a523e8fc42e59.svg) no-repeat 50% rgba(0,0,0,.8);cursor:pointer;opacity:.8}
+.profile__avatar-change{background:none;border:none;border-radius:50%;height:120px;margin:0;padding:0;position:absolute;width:120px}.profile__avatar-change:hover{background:url(8667ac4a523e8fc42e59.svg) no-repeat 50% rgba(0,0,0,.8);background-size:15px;cursor:pointer;opacity:.8}
 /*!***********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-zone/profile__avatar-zone.css ***!
   \***********************************************************************************************************************************************************************************/
@@ -69,7 +69,7 @@
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like/element__like.css ***!
   \*********************************************************************************************************************************************************************/
-.element__like{background:url(fe17a515669479b1e649.svg) no-repeat,50%;border:none;margin:0;min-height:19px;min-width:22px;padding:0;transition:.5s ease-in-out}.element__like:hover{cursor:pointer;opacity:.5}
+.element__like{background:url(87ed371465c7a6a1cd01.svg) no-repeat,50%;border:none;margin:0;min-height:19px;min-width:22px;padding:0;transition:.5s ease-in-out}.element__like:hover{cursor:pointer;opacity:.5}
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__name/element__name.css ***!
   \*********************************************************************************************************************************************************************/
@@ -85,7 +85,7 @@
 /*!************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like/_active/element__like_active.css ***!
   \************************************************************************************************************************************************************************************/
-.element__like_active{background:url(87ed371465c7a6a1cd01.svg)}
+.element__like_active{background:url(fe17a515669479b1e649.svg) no-repeat,50%}
 /*!*******************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like-zone/element__like-zone.css ***!
   \*******************************************************************************************************************************************************************************/

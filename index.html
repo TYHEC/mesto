@@ -91,10 +91,10 @@
         <div class="popup__container">
             <button class="popup__close" type="button" aria-label="Закрыть форму"></button>
             <h3 class="popup__title">Обновить аватар</h3>
-            <form name="avatar" class="popup__form" novalidate>
+            <form name="avatarform" class="popup__form" novalidate>
                 <label for="avatar-input" class="popup__field">
-                    <input type="text" class="popup__input" name="cardname" placeholder="Название" required
-                        minlength="2" maxlength="30" id="avatar-input">
+                    <input type="url" class="popup__input" name="avatar" placeholder="Ссылка на аватар" required
+                         id="avatar-input">
                     <span class="popup__error avatar-input-error"></span>
                 </label>
                 <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
@@ -107,7 +107,7 @@
                 <div class="element__description">
                     <h2 class="element__name"></h2>
                     <div class="element__like-zone">
-                        <button type="button" class="element__like element__like_active" aria-label="Нравится"></button>
+                        <button type="button" class="element__like" aria-label="Нравится"></button>
                         <p class="element__like-counter"></p>
                     </div>
                 </div>
