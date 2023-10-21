@@ -92,20 +92,8 @@ editAvatarIcon.addEventListener('click', () => {
 
 /** Accept-popup */
 
-const acceptPopup = new PopupAccept('#delete-card-popup', {
-  callBackAcceptForm: (element, cardId) => {
-    api.deleteCard(cardId)
-      .then(() => {
-        element.deleteCard()
-        acceptPopup.close();
-      })
-      .catch((err) => {
-        console.log(`При удалении карточки произошла ошибка: ${err}`)
-      })
-  }
-});
+const acceptPopup = new PopupAccept('#delete-card-popup');
 acceptPopup.setEventListeners();
-
 /** Рендер  */
 const uploadCard = function (data) {
   const card = new Card(data, '#element-template', userId, {
@@ -113,7 +101,19 @@ const uploadCard = function (data) {
     authorId: data.owner._id
   },
     {
-      handleTrashClick: (element, cardId) => { acceptPopup.open(element, cardId) },
+      handleTrashClick: (cardId) => {
+        acceptPopup.accept(() => {
+          api.deleteCard(cardId)
+            .then(() => {
+              card.deleteCard()
+              acceptPopup.close();
+            })
+            .catch((err) => {
+              console.log(`При удалении карточки произошла ошибка: ${err}`)
+            })
+        })
+        acceptPopup.open();
+      },
       handleCardClick: (name, image) => { zoomPopup.open(name, image) },
       handlePlaceLike: (cardId) => {
         api.placeCardLike(cardId)
@@ -146,18 +146,18 @@ const uploadInitialCards = new Section({
 const addNewCardPopup = new PopupWithForm('#cards-popup', {
   callbackSubmitForm: (updatedValues) => {
     addNewCardPopup.changeSubmitButtonText(),
-    api.postNewCard({
-      name: updatedValues.cardname,
-      link: updatedValues.cardlink
-    })
-      .then((data) => {
-        uploadInitialCards.addItem(uploadCard(data));
-        addNewCardPopup.close();
+      api.postNewCard({
+        name: updatedValues.cardname,
+        link: updatedValues.cardlink
       })
-      .catch((err) => { console.log(`ПРи добавлении новой карточки произошла ошибка: ${err}`) })
-      .finally(() => {
-        addNewCardPopup.resetSubmitButtonText();
-      })
+        .then((data) => {
+          uploadInitialCards.addItem(uploadCard(data));
+          addNewCardPopup.close();
+        })
+        .catch((err) => { console.log(`ПРи добавлении новой карточки произошла ошибка: ${err}`) })
+        .finally(() => {
+          addNewCardPopup.resetSubmitButtonText();
+        })
   }
 });
 addNewCardPopup.setEventListeners();

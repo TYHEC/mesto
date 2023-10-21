@@ -64,7 +64,7 @@ class Card {
     }
     _setEventListeners = () => {
         if (this._userId === this._authorId) {
-            this._elementDelete.addEventListener('click', () => this._handleTrashClick(this._element, this._cardId))
+            this._elementDelete.addEventListener('click', () => this._handleTrashClick(this._cardId))
         } else {
             this._elementDelete.remove();
         };
