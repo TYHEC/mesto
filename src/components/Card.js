@@ -43,8 +43,6 @@ class Card {
             this._handlePlaceLike(this._cardId)
         }
     }
-
-
     deleteCard() {
         this._element.remove();
         this._element = null;
@@ -66,10 +64,10 @@ class Card {
     }
     _setEventListeners = () => {
         if (this._userId === this._authorId) {
-            this._elementDelete.addEventListener('click', () => this._handleTrashClick(this._cardId))
+            this._elementDelete.addEventListener('click', () => this._handleTrashClick(this._element, this._cardId))
         } else {
             this._elementDelete.remove();
-        }
+        };
         this._elementLike.addEventListener('click', () => this._switchLike());
         this._elementPhoto.addEventListener('click', () => this._handleCardClick(this._image, this._name));
 

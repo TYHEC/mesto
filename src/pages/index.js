@@ -93,9 +93,10 @@ editAvatarIcon.addEventListener('click', () => {
 /** Accept-popup */
 
 const acceptPopup = new PopupAccept('#delete-card-popup', {
-  callBackAcceptForm: (cardId) => {
+  callBackAcceptForm: (element, cardId) => {
     api.deleteCard(cardId)
       .then(() => {
+        element.deleteCard()
         acceptPopup.close();
       })
       .catch((err) => {
@@ -112,7 +113,7 @@ const uploadCard = function (data) {
     authorId: data.owner._id
   },
     {
-      handleTrashClick: (cardId) => { acceptPopup.open(cardId) },
+      handleTrashClick: (element, cardId) => { acceptPopup.open(element, cardId) },
       handleCardClick: (name, image) => { zoomPopup.open(name, image) },
       handlePlaceLike: (cardId) => {
         api.placeCardLike(cardId)
@@ -144,6 +145,7 @@ const uploadInitialCards = new Section({
 
 const addNewCardPopup = new PopupWithForm('#cards-popup', {
   callbackSubmitForm: (updatedValues) => {
+    addNewCardPopup.changeSubmitButtonText(),
     api.postNewCard({
       name: updatedValues.cardname,
       link: updatedValues.cardlink
@@ -153,6 +155,9 @@ const addNewCardPopup = new PopupWithForm('#cards-popup', {
         addNewCardPopup.close();
       })
       .catch((err) => { console.log(`ПРи добавлении новой карточки произошла ошибка: ${err}`) })
+      .finally(() => {
+        addNewCardPopup.resetSubmitButtonText();
+      })
   }
 });
 addNewCardPopup.setEventListeners();
